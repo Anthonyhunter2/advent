@@ -1,5 +1,4 @@
 #!/usr/bin/python
-from re import search
 def ofile():
 	bigger_stuff = {}
 	with open("things","r") as f:
@@ -21,13 +20,14 @@ def main(jabby):
 	for k,v in jabby.items():
 		if not v:
 			del jabby[k]
-	for k,v in jabby.items():
-		for x in v:	
-			if x in jabby:
-				jabby[k][x] = jabby[x]
-				del jabby[x]
+	while len(jabby) > 1:
+		new_dict = {}
+		for key in jabby:
+			for value in jabby[key]:
+				if value in jabby:
+					new_dict[key] = {}
+					new_dict[key][value] = jabby[value]
+		jabby = new_dict
 	for i in jabby:
 		print(i)
-	return(jabby)
-#ofile()			
 main(ofile())
