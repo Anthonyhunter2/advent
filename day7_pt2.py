@@ -23,7 +23,6 @@ def num_dict(jabby):
 	count = 0
 	
 	for k in jabby:
-	#		pmrint(k.split()[2])
 		name = k.split()[0]
 		cot = int(k.split()[2])
 		name_num[name] = cot
@@ -43,7 +42,6 @@ def num_dict(jabby):
 						pass
 					else:
 						name_num[nme] = name_num[nme] + int(vals[0]) * divide 
-					#	pass
 				else: 
 					print("\t {} {}".format(key, name_num[key.split()[0]]))
 					check.append(key)
@@ -51,5 +49,4 @@ def num_dict(jabby):
 						print(x, name_num[x], count)
 		count += 1
 		print(len(check))
-#	print(name_num)
 num_dict(ofile())
