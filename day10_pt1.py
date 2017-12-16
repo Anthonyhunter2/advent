@@ -53,9 +53,9 @@ def main(jabby):
      #   cwp = index_num_list
    #     index_num_list = length + step
         print(index_num_list, working_list[index_num_list], "TAG")
-        if working_list[index_num_list]:
-            print("BOUT TO RUN")
-            loopedlist(working_list, index_num_list, length)
+#        if working_list[index_num_list]:
+        print("BOUT TO RUN")
+        loopedlist(working_list, index_num_list, length)
    #     else:
     #        index_num_list = index_num_list - working_list[cwp:]
         print(working_list, index_num_list, jabby, length)
