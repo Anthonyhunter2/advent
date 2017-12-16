@@ -11,7 +11,6 @@ def ofile():
         return(new_list)
 def loopedlist(w_list, w_ind, j_ind):
     print(j_ind - 1, "IM TXT")
-    print(w_list, "HI, STILL HRE")
    # times = (j_ind + 1)
     # times2 = j_ind
     # start_list = []
@@ -52,9 +51,7 @@ def main(jabby):
         length = int(jabby[x])
      #   cwp = index_num_list
    #     index_num_list = length + step
-        print(index_num_list, working_list[index_num_list], "TAG")
-#        if working_list[index_num_list]:
-        print("BOUT TO RUN")
+        print(index_num_list, working_list[index_num_list], length)
         loopedlist(working_list, index_num_list, length)
    #     else:
     #        index_num_list = index_num_list - working_list[cwp:]
@@ -62,6 +59,5 @@ def main(jabby):
         print(working_list[index_num_list], length)
    #     index_num_list += 1
     #    step += 1
-    #print(loopedlist(working_list, jabby, index_num_list, index_num_step))
 main(ofile())
 
