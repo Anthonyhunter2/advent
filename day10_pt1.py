@@ -11,33 +11,33 @@ def ofile():
         return(new_list)
 def loopedlist(w_list, w_ind, j_ind):
     print(j_ind - 1, "IM TXT")
-   # times = (j_ind + 1)
-    # times2 = j_ind
-    # start_list = []
-    # rev_list = []
-    # start_list.append(w_list[w_ind])
-    # next_one = w_ind
-    # next_two = w_ind
-    # print(times)
-    # while times > 0:
-    #     try:
-    #         next_one = next_one + 1
-    #         start_list.append(w_list[next_one])
-    #         times -= 1
-    #     except IndexError:
-    #         next_one = -1
-    # for i in reversed(start_list):
-    #     rev_list.append(i)
-    # print(rev_list)
-    # for x in range(len(rev_list)):
-    #     try:
-    #         w_list[next_two] = rev_list[x]
-    #         next_two = next_two + 1
-    #     except IndexError:
-    #         next_two = 0
-    #         w_list[next_two] = rev_list[x]
-    #         next_two = next_two + 1
-    # return(w_list)
+    times = (j_ind + 1)
+    times2 = j_ind
+    start_list = []
+    rev_list = []
+    start_list.append(w_list[w_ind])
+    next_one = w_ind
+    next_two = w_ind
+    print(times)
+    while times > 0:
+        try:
+            next_one = next_one + 1
+            start_list.append(w_list[next_one])
+            times -= 1
+        except IndexError:
+            next_one = -1
+    for i in reversed(start_list):
+        rev_list.append(i)
+    print(rev_list)
+    for x in range(len(rev_list)):
+        try:
+            w_list[next_two] = rev_list[x]
+            next_two = next_two + 1
+        except IndexError:
+            next_two = 0
+            w_list[next_two] = rev_list[x]
+            next_two = next_two + 1
+    return(w_list)
 def main(jabby):
     working_list = []
     list_for_changes = []
