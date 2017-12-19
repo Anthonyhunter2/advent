@@ -1,0 +1,94 @@
+#!/usr/bin/python
+
+def ofile ():
+    bigger_stuff = {}
+    with open("things","r") as f:
+        f = f.readlines()
+        for line in f:
+            line = line.split()
+            weight = "".join(line[1]).strip("(").strip(")")
+            key = "{} - {}".format(line[0], weight)
+            if "->" in line:
+                stuff = {}
+                for each in line[line.index("->")+1:]:
+                    stuff[each.strip(",")] = {}
+                value = stuff
+            else:
+                value = {}
+            bigger_stuff[key] = value
+    return(bigger_stuff)
+
+def num_dict(jabby):
+    name_num = {}
+    count = 0
+    stoppage = []
+    last_dict = {}
+    for k in jabby:
+        name = k.split()[0]
+        cot = int(k.split()[2])
+        name_num[name] = cot
+    while count < 9:
+        check = []
+        for key in jabby:
+            divide = len(jabby[key])
+            nme = key.split()[0]
+            if divide != 0:
+                total = 0
+                vals = []
+                check2 = []
+                for value in jabby[key]:
+                        vals.append(int(name_num[value]))
+                if len(set(vals)) <= 1:
+                    if name_num[nme] == int(key.split()[2]) + int(vals[0]) * divide:
+                        pass
+                    else:
+                        name_num[nme] = name_num[nme] + int(vals[0]) * divide
+                else:
+                    check.append(key)
+        count += 1
+        if len(check) not in stoppage:
+            stoppage.append(len(check))
+        else:
+            break
+    for x in jabby:
+        if jabby[x]:
+            for w,z in name_num.items():
+                if x.split()[0] == w:
+                    new_key = "{} - {}".format(x.split()[0], z)
+                    last_dict[new_key] = {}
+            for y in jabby[x]:
+               for a,b in name_num.items():
+                   if y == a:
+                       last_dict[new_key][y] = b
+    secar = {}
+    for i, j in last_dict.items():
+        becar = []
+        for g in j.values():
+            if g not in becar:
+              becar.append(g)
+        if len(becar) > 1:
+            addin = "{} , {}".format(i,j)
+            secar[i] = j
+    return(secar)
+def main(jabby, new_guy):
+    flob = []
+    for x in new_guy:
+        flob.append(x.split()[0])
+    for i in new_guy:
+        for j in new_guy[i]:
+            guy1 = max(new_guy[i].values())
+            guy2 = min(new_guy[i].values())
+            if new_guy[i].values().count(guy1) > 1:
+                guy_val = guy2
+                diff_val = guy1 - guy2
+            else:
+                guy_val = guy1
+                diff_val = guy1 - guy2
+            if guy_val == new_guy[i][j]:
+                guy = j
+
+        if guy not in flob:
+            curr_val = new_guy[i][guy]
+            should_be = int(curr_val) - int(diff_val)
+            print("The wrong value is {} - {} , it should have been {}".format(guy, curr_val, should_be))
+main(ofile(), num_dict(ofile()))
