@@ -12,27 +12,18 @@ def where_is_scanner(rnge_size, layer):
     ind = 0
     count = layer
     list_guy = range(rnge_size)
-    if count == None:
-        pass
-    elif count == 0:
-        return(ind)
-    elif len(list_guy) == 1:
-        return(ind) 
-    else:
-        while count > 0:
-            try:
-                ind += 1
-      #          print(list_guy)
-                list_guy[ind]
-       #         print(ind)  
-                count -= 1
-            except IndexError:
-                ind = 0
-                list_guy = list(reversed(list_guy))
-        return(list_guy[ind])
-total_catch = []
-for x,y in ofile().items():
-    scanner = where_is_scanner(y,x)
-    if scanner == 0:
-        total_catch.append(x*y)
-print(sum(total_catch))
+    resultx = layer % ((rnge_size * 2) -2)
+    return(resultx)
+z = 3000000
+test_case = ofile()
+while True:
+    total_catch = []
+    for x,y in test_case.items():
+        scanner = where_is_scanner(y,(x + z))
+        if scanner == 0:
+            total_catch.append(1)
+            break
+    if sum(total_catch) == 0:
+        print("I WON on Try: {}".format(z))
+        break
+    z += 1
