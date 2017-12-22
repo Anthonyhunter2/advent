@@ -12,6 +12,7 @@ def where_is_scanner(rnge_size, layer):
     ind = 0
     count = layer
     list_guy = range(rnge_size)
+    resultx = layer % ((rnge_size *2) - 2)
     if count == None:
         pass
     elif count == 0:
@@ -29,7 +30,8 @@ def where_is_scanner(rnge_size, layer):
             except IndexError:
                 ind = 0
                 list_guy = list(reversed(list_guy))
-        return(list_guy[ind])
+        # return(list_guy[ind])
+        return(resultx)
 total_catch = []
 for x,y in ofile().items():
     scanner = where_is_scanner(y,x)
