@@ -6,30 +6,45 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 )
 
 var inputInts []int
 
 func main() {
-	t := time.Now()
 	inputFile := os.Args[1]
 	inputList := readInFile(inputFile)
+	t := time.Now()
 	lineOne := strings.Split(inputList[0], ",")
 	lineTwo := strings.Split(inputList[1], ",")
-	lineOnePoints := drawLine(lineOne)
-	lineTwoPoints := drawLine(lineTwo)
+	var listOne map[string]int
+	var listTwo map[string]int
+	wg := sync.WaitGroup{}
+	wg.Add(2)
+	go func(thisThing []string) {
+		listOne = drawLine(thisThing)
+		wg.Done()
+	}(lineOne)
+
+	go func(thisThing []string) {
+		listTwo = drawLine(thisThing)
+		wg.Done()
+	}(lineTwo)
+	wg.Wait()
 	intersections := map[string]int{}
-	for k := range lineTwoPoints {
-		if _, ok := lineOnePoints[k]; ok {
-			intersections[k] = lineOnePoints[k] + lineTwoPoints[k]
+	for k := range listTwo {
+		if _, ok := listOne[k]; ok {
+			intersections[k] = listOne[k] + listTwo[k]
 		}
 	}
-	lowSteps := 10000000
+	lowSteps := 0
 	manhattenX := 0
 	manhattenY := 0
 	for pointString, steps := range intersections {
-		if pointString != "0,0" {
+		if lowSteps == 0 {
+			lowSteps = steps
+		} else {
 			points := strings.Split(pointString, ",")
 			xPoint, _ := strconv.Atoi(points[0])
 			yPoint, _ := strconv.Atoi(points[1])
@@ -51,36 +66,35 @@ func drawLine(instructionSet []string) map[string]int {
 	count := 1
 	workingArray := map[string]int{"0,0": 0}
 	for _, instructionBlock := range instructionSet {
-		instruction := strings.Split(instructionBlock, "")
-		switch instruction[0] {
+		switch string(instructionBlock[0]) {
 		case "R":
-			tempX, _ := strconv.Atoi(strings.Join(instruction[1:], ""))
+			tempX, _ := strconv.Atoi(instructionBlock[1:])
 			for i := 1; i <= tempX; i++ {
-				point := fmt.Sprintf("%d,%d", i+x, y)
+				point := strconv.Itoa(i+x) + "," + strconv.Itoa(y)
 				workingArray[point] = count
 				count++
 			}
 			x += tempX
 		case "L":
-			tempX, _ := strconv.Atoi(strings.Join(instruction[1:], ""))
+			tempX, _ := strconv.Atoi(instructionBlock[1:])
 			for i := -1; i >= -tempX; i-- {
-				point := fmt.Sprintf("%d,%d", i+x, y)
+				point := strconv.Itoa(i+x) + "," + strconv.Itoa(y)
 				workingArray[point] = count
 				count++
 			}
 			x += -tempX
 		case "U":
-			tempY, _ := strconv.Atoi(strings.Join(instruction[1:], ""))
+			tempY, _ := strconv.Atoi(instructionBlock[1:])
 			for i := 1; i <= tempY; i++ {
-				point := fmt.Sprintf("%d,%d", x, i+y)
+				point := strconv.Itoa(x) + "," + strconv.Itoa(i+y)
 				workingArray[point] = count
 				count++
 			}
 			y += tempY
 		case "D":
-			tempY, _ := strconv.Atoi(strings.Join(instruction[1:], ""))
+			tempY, _ := strconv.Atoi(instructionBlock[1:])
 			for i := -1; i >= -tempY; i-- {
-				point := fmt.Sprintf("%d,%d", x, i+y)
+				point := strconv.Itoa(x) + "," + strconv.Itoa(i+y)
 				workingArray[point] = count
 				count++
 			}
@@ -88,15 +102,8 @@ func drawLine(instructionSet []string) map[string]int {
 		}
 	}
 	return workingArray
-
 }
 
-func abs(point int) (absPoint int) {
-	if point > 0 {
-		return point
-	}
-	return -point
-}
 func readInFile(fileName string) []string {
 	input := []string{}
 	f, err := os.Open(fileName)

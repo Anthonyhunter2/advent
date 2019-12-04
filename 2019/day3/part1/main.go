@@ -31,6 +31,7 @@ func main() {
 	manhattenPoint := 10000
 	manhattenX := 0
 	manhattenY := 0
+	fmt.Println(len(intersections))
 	for _, pointString := range intersections {
 		if pointString != "0,0" {
 			points := strings.Split(pointString, ",")
