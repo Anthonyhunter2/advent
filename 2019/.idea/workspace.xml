@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e53f5981-5d23-4b25-a8ed-91e00a72492a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/saveactions_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/day3/part1/steve.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/day5/part1/test.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/day3/part1/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/day3/part1/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/day3/part1/test.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/day3/part2/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/day3/part2/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +82,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="320" y="127" key="#Notifications/0.23.1440.877@0.23.1440.877" timestamp="1575408003597" />
+    <state x="443" y="260" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1575564320429">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="443" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1575564320429" />
     <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1575409138567">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
