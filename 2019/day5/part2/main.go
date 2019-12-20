@@ -33,8 +33,6 @@ func main() {
 
 func Updatelist(ind int) {
 	count++
-	//fmt.Println("main Count", count)
-	//fmt.Println("before work:", inputInts)
 	positionMode1 := 0
 	positionMode2 := 0
 	firstValue := 0
@@ -48,7 +46,6 @@ func Updatelist(ind int) {
 			value3 = inputInts[ind+3]
 			value2 = inputInts[ind+2]
 		}
-		//fmt.Println(value1, "<<<", value2)
 		firstValue = possitionMode(value1)
 		secondValue = possitionMode(value2)
 		mainLoop(ind, firstValue, secondValue, value3, 0)
@@ -87,6 +84,7 @@ func Updatelist(ind int) {
 		}
 		mainLoop(ind, firstValue, secondValue, value3, action)
 	}
+	return
 END:
 	return
 }

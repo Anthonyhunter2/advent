@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e53f5981-5d23-4b25-a8ed-91e00a72492a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/day6/part1/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/day5/part1/test.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/day3/part1/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/day3/part1/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/day3/part1/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day5/part2/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/day5/part2/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +93,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="415" y="93" key="#go_build_main.go/0.0.1440.900@0.0.1440.900" timestamp="1575587449322" />
+    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1575653376564">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1575653376564" />
     <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1575409138567">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

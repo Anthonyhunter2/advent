@@ -12,9 +12,9 @@ import (
 var inputInts []int
 
 func main() {
-	t := time.Now()
 	inputFile := os.Args[1]
 	inputList := readInFile(inputFile)
+	t := time.Now()
 	lineOne := strings.Split(inputList[0], ",")
 	lineTwo := strings.Split(inputList[1], ",")
 	lineOnePoints := drawLine(lineOne)
