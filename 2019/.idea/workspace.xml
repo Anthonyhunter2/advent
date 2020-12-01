@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e53f5981-5d23-4b25-a8ed-91e00a72492a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/day6/part1/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/day3/part1/input.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/day3/part1/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/day3/part1/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/day5/part2/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/day5/part2/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +20,9 @@
   <component name="GOROOT" path="/usr/local/Cellar/go/1.13.4/libexec" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="ProjectId" id="1UMkVJULdeW1QKB10FaTbFK6Aif" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />

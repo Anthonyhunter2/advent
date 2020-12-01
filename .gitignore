@@ -1,0 +1,17 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gitignore
+.idea/
+2019/day5/input.txt
+2019/day6/input.txt
+2019/day6/part1/test.txt
+2019/day6/part2/
+2020/.idea/
+awesomeProject/.idea/.gitignore
+awesomeProject/.idea/awesomeProject.iml
+awesomeProject/.idea/misc.xml
+awesomeProject/.idea/modules.xml
+awesomeProject/.idea/vcs.xml
+awesomeProject/.idea/watcherTasks.xml
+awesomeProject/go.mod
+awesomeProject/go.sum
+awesomeProject/main.pricing.bk
