@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	var numberList []float64
+	var numberList []int
 
 	f, err := os.Open("./input.txt")
 	if err != nil {
@@ -18,24 +18,30 @@ func main() {
 	defer f.Close()
 	reader := bufio.NewScanner(f)
 	for reader.Scan() {
-		stringNum, err := strconv.ParseFloat(reader.Text(), 64)
+		stringNum, err := strconv.Atoi(reader.Text())
 		if err != nil {
 			fmt.Println(err)
 		}
 		numberList = append(numberList, stringNum)
 	}
 	t := time.Now()
-	for _, number1 := range numberList {
-		for _, number2 := range numberList { {
-		if number1 != number2{
-		if number1 + number2 == 2020{
-			fmt.Println(number1 * number2)
-			fmt.Println(time.Since(t))
-			os.Exit(0)
-		}}
-		}
+	//for _, num1 := range numberList {
+	//	for _, num2 := range numberList {
+	//		if num1+num2 == 2020 {
+	//			fmt.Println(num1 * num2)
+	//			fmt.Println(time.Since(t))
+	//			os.Exit(0)
+	//		}
+	//	}
+	//}
+
+	for ind := 0; ind < len(numberList); ind++ {
+		for _, num := range numberList[ind:] {
+			if numberList[ind]+num == 2020 {
+				fmt.Println(numberList[ind] * num)
+				fmt.Println(time.Since(t))
+				return
+			}
 		}
 	}
-
-	fmt.Println(time.Since(t))
 }

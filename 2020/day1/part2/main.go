@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func main() {
+func getInput() []int {
 	var numberList []int
 
 	f, err := os.Open("./input.txt")
@@ -24,22 +24,24 @@ func main() {
 		}
 		numberList = append(numberList, stringNum)
 	}
+	return numberList
+}
+func main() {
+
+	numberList := getInput()
 	t := time.Now()
-	for _, number1 := range numberList {
-		for _, number2 := range numberList {
-			for _, number3 := range numberList {
-				//if number1 != number2 && number1 != number3{
-				//	if number2 != number3 {
-						if number1 + number2 + number3 == 2020{
-							fmt.Println(number1 * number2* number3)
-							fmt.Println(time.Since(t))
-							os.Exit(0)
-						}
-					//}
-				//}
+
+	for _, num1 := range numberList {
+		for _, num2 := range numberList {
+			for _, num3 := range numberList {
+				if num1+num2+num3 == 2020 {
+					et := time.Now().Sub(t)
+					fmt.Println(num1 * num2 * num3)
+					fmt.Println(et)
+					return
+				}
 			}
 		}
 	}
 
-	fmt.Println(time.Since(t))
 }
