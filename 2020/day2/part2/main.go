@@ -16,51 +16,50 @@ type PWEntry struct {
 	Password  string
 }
 
-func getInput() []PWEntry {
-	var pwList []PWEntry
+func getInput() []string {
+	var pwList []string
 
-	f, err := os.Open("./input.txt")
+	f, err := os.Open(os.Args[1])
 	if err != nil {
 		fmt.Println(err)
 	}
 	defer f.Close()
 	reader := bufio.NewScanner(f)
 	for reader.Scan() {
-		newEntry := PWEntry{}
-		splitLine := strings.Split(reader.Text(), ":")
-		keyValues := strings.Split(splitLine[0], " ")
-		rangeLow, err := strconv.Atoi(strings.Split(keyValues[0], "-")[0])
-		if err != nil {
-			fmt.Println(err)
-		}
-		rangeHigh, err := strconv.Atoi(strings.Split(keyValues[0], "-")[1])
-		if err != nil {
-			fmt.Println(err)
-		}
-		newEntry.RangeLow = rangeLow
-		newEntry.RangeHigh = rangeHigh
-		newEntry.KeyLetter = keyValues[1]
-		newEntry.Password = strings.TrimSpace(splitLine[1])
-		pwList = append(pwList, newEntry)
+		pwList = append(pwList, reader.Text())
 	}
 	return pwList
 }
 func main() {
-	t := time.Now()
+	//t := time.Now()
 	data := getInput()
+	t := time.Now()
 	goodPWs := 0
 	for _, password := range data {
-		ind1 := string(password.Password[password.RangeLow-1])
-		ind2 := string(password.Password[password.RangeHigh-1])
-
-		switch {
-		case ind1 == password.KeyLetter && ind2 == password.KeyLetter:
-			continue
-		case ind1 == password.KeyLetter:
-			goodPWs += 1
-		case ind2 == password.KeyLetter:
-			goodPWs += 1
+		splitLine := strings.Split(password, " ")
+		keyLetter := strings.TrimRight(splitLine[1], ":")
+		ranges := strings.Split(splitLine[0], "-")
+		rangeLow, err := strconv.Atoi(ranges[0])
+		if err != nil {
+			fmt.Println(err)
 		}
+		rangeHigh, err := strconv.Atoi(ranges[1])
+		if err != nil {
+			fmt.Println(err)
+		}
+		ind1 := string(splitLine[2][rangeLow-1])
+		ind2 := string(splitLine[2][rangeHigh-1])
+		if (ind1 != keyLetter) != (ind2 != keyLetter) {
+			goodPWs++
+		}
+		//switch {
+		//case ind1 == keyLetter && ind2 == keyLetter:
+		//	continue
+		//case ind1 == keyLetter:
+		//	goodPWs += 1
+		//case ind2 == keyLetter:
+		//	goodPWs += 1
+		//}
 	}
 	fmt.Println(goodPWs)
 	fmt.Println(time.Since(t))
