@@ -26,25 +26,16 @@ func getInput(filename string) ([][]byte, error) {
 func skiTheSlope(right int, down int, data [][]byte) int {
 	numTrees := 0
 	tree := byte(35)
-	totalLength := len(data[0]) - 1
+	totalLength := len(data[0])
 	index := 0
-	slopeLine := 0
-	for range data {
-		if slopeLine == 0 {
-			slopeLine += down
-			continue
-		} else if slopeLine > len(data) {
-			return numTrees
-		}
-		if totalLength-index < right {
-			index = right - (totalLength - index) - 1
-		} else {
-			index += right
+	for slopeLine := 0; slopeLine < len(data); slopeLine += down {
+		if index >= totalLength {
+			index -= totalLength
 		}
 		if data[slopeLine][index] == tree {
 			numTrees++
 		}
-		slopeLine += down
+		index += right
 	}
 	return numTrees
 }
