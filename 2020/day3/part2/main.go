@@ -2,24 +2,25 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"os"
 	"time"
 )
 
-func getInput() [][]byte {
+func getInput(filename string) ([][]byte, error) {
 	var skiSlope [][]byte
 
-	f, err := os.Open(os.Args[1])
+	f, err := os.Open(filename)
 	if err != nil {
-		fmt.Println(err)
+		return nil, err
 	}
 	defer f.Close()
 	reader := bufio.NewScanner(f)
 	for reader.Scan() {
 		skiSlope = append(skiSlope, []byte(reader.Text()))
 	}
-	return skiSlope
+	return skiSlope, reader.Err()
 }
 
 func skiTheSlope(right int, down int, data [][]byte) int {
@@ -49,9 +50,34 @@ func skiTheSlope(right int, down int, data [][]byte) int {
 }
 
 func main() {
-	data := getInput()
-	t := time.Now()
+	var (
+		rounds        int
+		inputFilename string
+	)
+	flag.IntVar(&rounds, "rounds", 1, "number of rounds for benchmark")
+	flag.StringVar(&inputFilename, "input", "input", "input data filename")
+	flag.Parse()
 
+	input, err := getInput(inputFilename)
+	if err != nil {
+		panic(err)
+	}
+
+	doTimes := make([]time.Duration, rounds)
+	var res int
+	for i := 0; i < rounds; i++ {
+		res, doTimes[i] = doPart2(input)
+	}
+	var tot time.Duration
+	for i := 0; i < rounds; i++ {
+		tot += doTimes[i]
+	}
+	fmt.Printf("result:\t %v\n", res)
+	fmt.Printf("elapsed:\t%v\n", tot/time.Duration(rounds))
+}
+
+func doPart2(data [][]byte) (int, time.Duration) {
+	t := time.Now()
 	runs := []int{1, 3, 5, 7, 1}
 	rise := []int{1, 1, 1, 1, 2}
 	result := 1
@@ -60,7 +86,5 @@ func main() {
 		//fmt.Println(multiplyMe)
 		result = result * multiplyMe
 	}
-
-	fmt.Println(result)
-	fmt.Println(time.Since(t))
+	return result, time.Since(t)
 }
